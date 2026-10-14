@@ -1,0 +1,14 @@
+{
+  "name": "etsy-keyword-generator",
+  "version": "1.0.0",
+  "description": "Free Etsy keyword generator by Courtney Nichole",
+  "main": "server.js",
+  "scripts": {
+    "start": "node server.js"
+  },
+  "engines": {
+    "node": ">=18"
+  },
+  "license": "UNLICENSED",
+  "private": true
+}

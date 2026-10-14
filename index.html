@@ -1,0 +1,788 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<title>Etsy Keyword Generator | Courtney Nichole</title>
+<meta name="description" content="Answer 6 quick questions and get 50+ Etsy keyword phrases built the way your buyer searches, ready to check in your keyword tool.">
+<meta property="og:title" content="Etsy Keyword Generator | Courtney Nichole">
+<meta property="og:description" content="Answer 6 quick questions and get 50+ Etsy keyword phrases built the way your buyer searches.">
+<meta property="og:type" content="website">
+<meta name="theme-color" content="#9348B9">
+<link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 32 32'%3E%3Crect width='32' height='32' rx='7' fill='%239348B9'/%3E%3Ccircle cx='14' cy='14' r='6.5' fill='none' stroke='white' stroke-width='3'/%3E%3Cpath d='M19 19l6 6' stroke='white' stroke-width='3' stroke-linecap='round'/%3E%3C/svg%3E">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Carlito:wght@400;700&family=IBM+Plex+Mono:wght@500&display=swap">
+<style>
+[hidden]{display:none!important}
+img{max-width:100%}
+:root{padding-top:env(safe-area-inset-top,0px)}
+/* Layout: one calm column, one question per screen, results read as a working list of tag-sized phrases */
+:root{
+  --bg:#FBF7EF; --surface:#F3ECEB; --ink:#1E1722; --muted:#695E70; --line:#E7DED8;
+  --accent:#9348B9; --accent-ink:#FFFFFF; --accent-soft:#F2E8F8;
+  --ok:#2E7A57; --ok-soft:#E7F4EC; --warn:#9A5600; --warn-soft:#FFF3E2;
+  --font-body:"Carlito","Calibri","Segoe UI",system-ui,-apple-system,sans-serif;
+  --font-mono:"IBM Plex Mono",ui-monospace,"SFMono-Regular",Menlo,monospace;
+  --r:10px;
+}
+@media (prefers-color-scheme: dark){:root:not([data-theme="light"]){
+  --bg:#141016; --surface:#1D1821; --ink:#F2EEF5; --muted:#A99EAF; --line:#332A38;
+  --accent:#C38FE3; --accent-ink:#1A0F21; --accent-soft:#2B2033;
+  --ok:#6FC79D; --ok-soft:#18281F; --warn:#F2B465; --warn-soft:#2D2314; color-scheme:dark;
+}}
+:root[data-theme="dark"]{
+  --bg:#141016; --surface:#1D1821; --ink:#F2EEF5; --muted:#A99EAF; --line:#332A38;
+  --accent:#C38FE3; --accent-ink:#1A0F21; --accent-soft:#2B2033;
+  --ok:#6FC79D; --ok-soft:#18281F; --warn:#F2B465; --warn-soft:#2D2314; color-scheme:dark;
+}
+*{box-sizing:border-box}
+body{background:var(--bg);color:var(--ink);font-family:var(--font-body);font-size:17px;line-height:1.55;margin:0}
+.wrap{max-width:720px;margin:0 auto;padding-inline:20px;padding-block:28px 64px}
+h1,h2,h3{text-wrap:balance;line-height:1.15;margin:0}
+p{margin:0}
+a{color:var(--accent)}
+button{font:inherit;color:inherit;cursor:pointer}
+button:focus-visible,input:focus-visible,a:focus-visible{outline:3px solid var(--accent);outline-offset:2px}
+
+.brandbar{display:flex;justify-content:space-between;align-items:center;gap:12px;padding-bottom:18px;border-bottom:1px solid var(--line);margin-bottom:32px}
+.wordmark{font-weight:700;letter-spacing:.14em;text-transform:uppercase;font-size:13px}
+.wordmark span{color:var(--accent)}
+.brandbar small{color:var(--muted);font-size:14px}
+
+.eyebrow{font-size:13px;letter-spacing:.12em;text-transform:uppercase;color:var(--accent);font-weight:700}
+.lede{color:var(--muted);font-size:19px;max-width:60ch}
+
+/* intro */
+.intro{display:grid;gap:22px}
+.intro h1{font-size:clamp(34px,6vw,48px);font-weight:700}
+.steps{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:14px;margin:6px 0 4px;padding:0;list-style:none;counter-reset:s}
+.steps li{counter-increment:s;padding-top:12px;border-top:2px solid var(--ink);font-size:16px;min-width:0}
+.steps li::before{content:counter(s);display:block;font-family:var(--font-mono);font-size:13px;color:var(--accent);margin-bottom:4px}
+.steps b{display:block}
+.sample{background:var(--surface);border-radius:var(--r);padding:18px;display:grid;gap:10px}
+.sample-head{display:flex;justify-content:space-between;gap:10px;flex-wrap:wrap;font-size:15px;color:var(--muted)}
+.tag-ex{font-size:12px;font-weight:700;letter-spacing:.08em;text-transform:uppercase;border:1px solid var(--line);border-radius:999px;padding:1px 9px;color:var(--muted);background:var(--bg)}
+
+.btn{display:inline-flex;align-items:center;justify-content:center;gap:8px;border:0;border-radius:999px;padding:12px 24px;font-weight:700;font-size:17px;text-decoration:none}
+.btn-primary{background:var(--accent);color:var(--accent-ink)}
+.btn-primary:hover{filter:brightness(1.07)}
+.btn-primary:disabled{opacity:.4;cursor:not-allowed;filter:none}
+.btn-ghost{background:transparent;border:1px solid var(--line);color:var(--ink)}
+.btn-ghost:hover{border-color:var(--accent)}
+.btn-text{background:none;border:0;color:var(--muted);padding:12px 4px;font-weight:700}
+.btn-text:hover{color:var(--ink)}
+
+/* quiz */
+.progress{display:grid;grid-template-columns:repeat(6,1fr);gap:6px;margin-bottom:10px}
+.progress i{height:4px;border-radius:2px;background:var(--line)}
+.progress i.on{background:var(--accent)}
+.qcount{font-family:var(--font-mono);font-size:13px;color:var(--muted);margin-bottom:22px}
+.q h2{font-size:clamp(26px,4.4vw,34px);margin-bottom:8px}
+.q .help{color:var(--muted);margin-bottom:22px;max-width:60ch}
+.opts{display:flex;flex-wrap:wrap;gap:10px}
+.opts.cards{display:grid;grid-template-columns:repeat(2,minmax(0,1fr))}
+.opt{border:1px solid var(--line);background:var(--bg);border-radius:999px;padding:9px 16px;font-size:16px;text-align:left;transition:border-color .15s,background .15s}
+.opt:hover{border-color:var(--accent)}
+.opt[aria-pressed="true"]{background:var(--accent);border-color:var(--accent);color:var(--accent-ink)}
+.opts.cards .opt{border-radius:var(--r);padding:16px;display:grid;gap:2px;min-width:0}
+.opts.cards .opt b{font-size:18px}
+.opts.cards .opt span{font-size:15px;color:var(--muted)}
+.opts.cards .opt[aria-pressed="true"] span{color:var(--accent-ink);opacity:.85}
+.opt .season{font-size:11px;letter-spacing:.08em;text-transform:uppercase;margin-left:6px;opacity:.7}
+.group-label{font-size:13px;letter-spacing:.1em;text-transform:uppercase;color:var(--muted);font-weight:700;margin:20px 0 10px}
+.group-label:first-child{margin-top:0}
+.field{display:grid;gap:6px;margin-top:16px}
+.field label{font-weight:700;font-size:15px}
+.input{width:100%;font:inherit;font-size:18px;padding:12px 14px;border:1px solid var(--line);border-radius:var(--r);background:var(--bg);color:var(--ink)}
+.input:focus{border-color:var(--accent);outline:none;box-shadow:0 0 0 3px var(--accent-soft)}
+.limit{font-size:14px;color:var(--muted);margin-top:12px}
+.nav{display:flex;justify-content:space-between;align-items:center;gap:12px;margin-top:34px;padding-top:20px;border-top:1px solid var(--line)}
+.yesno{display:flex;gap:10px;margin-top:8px}
+
+/* results */
+.results{display:grid;gap:30px}
+.results h1{font-size:clamp(30px,5vw,40px)}
+.profile{display:flex;flex-wrap:wrap;gap:8px}
+.profile span{background:var(--surface);border-radius:999px;padding:4px 12px;font-size:15px}
+.profile b{color:var(--muted);font-weight:400;margin-right:4px}
+.notice{border-radius:var(--r);padding:14px 16px;font-size:16px;background:var(--warn-soft);color:var(--ink);border-left:4px solid var(--warn)}
+.notice strong{color:var(--warn)}
+.how{background:var(--surface);border-radius:var(--r);padding:22px;display:grid;gap:14px}
+.how h2{font-size:22px}
+.how ol{margin:0;padding-left:22px;display:grid;gap:10px}
+.how li{padding-left:4px}
+.how .tools{display:flex;flex-wrap:wrap;gap:10px;align-items:center}
+.how .disclose{font-size:13px;color:var(--muted)}
+.legend{display:flex;flex-wrap:wrap;gap:8px 18px;font-size:14px;color:var(--muted)}
+.legend b{color:var(--ink)}
+
+.list-head{display:flex;justify-content:space-between;align-items:flex-end;gap:12px;flex-wrap:wrap;margin-bottom:6px}
+.list-head h2{font-size:24px}
+.group{margin-top:22px}
+.group h3{font-size:14px;letter-spacing:.1em;text-transform:uppercase;color:var(--accent);margin-bottom:2px}
+.group p.gdesc{font-size:15px;color:var(--muted);margin-bottom:6px}
+.rows{list-style:none;margin:0;padding:0}
+.row{display:grid;grid-template-columns:minmax(0,1fr) auto;gap:6px 14px;align-items:center;padding:12px 0;border-bottom:1px solid var(--line)}
+.row.kept .phrase{color:var(--ok)}
+.row.aside .phrase{color:var(--muted);text-decoration:line-through;text-decoration-thickness:1px}
+.phrase{font-size:19px;font-weight:700;overflow-wrap:anywhere}
+.meta{grid-column:1;display:flex;flex-wrap:wrap;align-items:center;gap:6px 12px;font-size:14px;color:var(--muted)}
+.meter{display:inline-flex;align-items:center;gap:8px;font-family:var(--font-mono);font-size:12px}
+.meter i{display:block;width:60px;height:5px;border-radius:3px;background:var(--line);position:relative;overflow:hidden}
+.meter i::after{content:"";position:absolute;inset:0;width:var(--w);background:var(--accent);border-radius:3px}
+.meter.over i::after{background:var(--muted)}
+.spec{font-size:12px;font-weight:700;letter-spacing:.06em;text-transform:uppercase;padding:1px 8px;border-radius:999px;border:1px solid var(--line)}
+.spec.focused{border-color:var(--accent);color:var(--accent)}
+.acts{grid-column:2;grid-row:1 / span 2;display:flex;gap:6px}
+.chip{border:1px solid var(--line);background:var(--bg);border-radius:999px;padding:6px 12px;font-size:14px;font-weight:700;color:var(--muted)}
+.chip:hover{border-color:var(--ink);color:var(--ink)}
+.chip.keep[aria-pressed="true"]{background:var(--ok);border-color:var(--ok);color:var(--bg)}
+.chip.toss[aria-pressed="true"]{background:var(--surface);border-color:var(--muted);color:var(--ink)}
+.addown{display:flex;gap:10px;margin-top:18px}
+.addown .input{font-size:16px;padding:10px 12px}
+
+.kept{border:2px solid var(--ok);border-radius:var(--r);padding:20px;display:grid;gap:12px}
+.kept h2{font-size:22px}
+.kept .stats{display:flex;flex-wrap:wrap;gap:6px 18px;font-size:15px;color:var(--muted)}
+.kept .stats b{font-family:var(--font-mono);color:var(--ink);font-weight:500}
+.kept ul{list-style:none;margin:0;padding:0;display:flex;flex-wrap:wrap;gap:8px}
+.kept li{background:var(--ok-soft);border-radius:6px;padding:4px 10px;font-size:16px}
+.kept .empty{color:var(--muted);font-size:16px}
+.copyrow{display:flex;flex-wrap:wrap;gap:10px;align-items:center}
+.copied{font-size:14px;color:var(--ok);font-weight:700}
+.fallback{width:100%;min-height:90px;font-family:var(--font-mono);font-size:13px;border:1px solid var(--line);border-radius:8px;padding:10px;background:var(--surface);color:var(--ink)}
+
+.cta{background:var(--ink);color:var(--bg);border-radius:14px;padding:28px;display:grid;gap:14px}
+.cta .eyebrow{color:var(--accent)}
+.cta h2{font-size:clamp(24px,4vw,30px)}
+.cta p{color:var(--bg);opacity:.82;max-width:58ch}
+.cta .quote{font-size:19px;opacity:1;border-left:3px solid var(--accent);padding-left:14px}
+.cta .btn-primary{justify-self:start}
+.foot{font-size:13px;color:var(--muted);text-align:center;margin-top:8px;padding-bottom:72px}
+.row{padding:10px 0}
+.dock{position:fixed;left:0;right:0;bottom:0;background:var(--bg);border-top:1px solid var(--line);padding:10px 16px calc(10px + env(safe-area-inset-bottom, 0px));z-index:5}
+.dock-in{max-width:720px;margin:0 auto;display:flex;align-items:center;gap:18px;font-size:15px;color:var(--muted)}
+.dock-in b{font-family:var(--font-mono);font-weight:500;color:var(--ink)}
+.dock-link{margin-left:auto;font-weight:700;color:var(--accent);text-decoration:none}
+#keptBox{scroll-margin-bottom:80px}
+
+@media (max-width:560px){
+  .steps{grid-template-columns:1fr}
+  .opts.cards{grid-template-columns:1fr}
+  .row{grid-template-columns:1fr}
+  .acts{grid-column:1;grid-row:auto}
+  .addown{flex-direction:column}
+}
+@media (prefers-reduced-motion:no-preference){
+  .screen{animation:rise .28s ease-out}
+  @keyframes rise{from{transform:translateY(6px)}to{transform:none}}
+}
+</style>
+</head>
+<body>
+<div class="wrap">
+  <header class="brandbar">
+    <div class="wordmark">Courtney <span>Nichole</span></div>
+    <small>Free tool for new Etsy sellers</small>
+  </header>
+  <main id="app" aria-live="polite"></main>
+</div>
+
+<script>
+/* ---------- data ---------- */
+/* alt = other names shoppers use for the same product */
+const TYPES = {
+  pod: { label:'Print on demand', hint:'Shirts, mugs, tumblers, ornaments, prints', products:[
+    {id:'shirt',label:'T-shirt',n:'shirt',alt:['t-shirt','tee','graphic tee','tshirt','unisex shirt','oversized tee','short sleeve shirt'],gift:true},
+    {id:'sweatshirt',label:'Sweatshirt',n:'sweatshirt',alt:['crewneck sweatshirt','crewneck','pullover','oversized sweatshirt','hoodie','cozy sweatshirt'],gift:true},
+    {id:'mug',label:'Mug',n:'mug',alt:['coffee mug','coffee cup','tea cup','ceramic mug','11 oz mug','15 oz mug'],gift:true},
+    {id:'tumbler',label:'Tumbler',n:'tumbler',alt:['travel tumbler','tumbler cup','insulated tumbler','tumbler with straw','skinny tumbler','20 oz tumbler','travel mug'],gift:true},
+    {id:'tote',label:'Tote bag',n:'tote bag',alt:['canvas tote','tote','canvas bag','book bag','market tote','beach bag','shopping bag'],gift:true},
+    {id:'ornament',label:'Ornament',n:'ornament',alt:['keepsake ornament','christmas ornament','tree ornament','ceramic ornament','acrylic ornament','hanging ornament'],gift:true},
+    {id:'print',label:'Wall art print',n:'wall art',alt:['art print','poster','wall decor','framed print','canvas print','wall hanging'],gift:true},
+    {id:'dish',label:'Jewelry dish',n:'jewelry dish',alt:['ring dish','trinket dish','trinket tray','ring holder','jewelry plate','jewelry tray','catchall dish','key dish','vanity tray'],gift:true}
+  ]},
+  digital: { label:'Digital downloads', hint:'Canva templates, printables, PNG and SVG files', products:[
+    {id:'invite',label:'Invitation template',n:'invitation',alt:['invitation template','digital invitation','editable invitation','printable invitation','invite','party invitation','evite'],gift:false,editable:true},
+    {id:'printart',label:'Printable wall art',n:'printable wall art',alt:['digital print','printable art','downloadable print','printable poster','instant download art'],gift:true},
+    {id:'planner',label:'Planner or tracker',n:'printable planner',alt:['digital planner','planner printable','habit tracker','printable tracker','weekly planner','daily planner','planner insert'],gift:false},
+    {id:'png',label:'PNG or sublimation design',n:'png',alt:['sublimation design','shirt design png','sublimation png','png file','clipart','dtf design'],gift:false},
+    {id:'svg',label:'SVG cut file',n:'svg',alt:['svg cut file','svg file','cut file','svg design','layered svg','vinyl decal svg'],gift:false},
+    {id:'social',label:'Social media templates',n:'instagram templates',alt:['social media templates','instagram post template','instagram story template','social media kit','content templates'],gift:false,editable:true},
+    {id:'sign',label:'Party sign or printable',n:'sign template',alt:['printable sign','party sign','welcome sign','table sign','editable sign'],gift:false,editable:true},
+    {id:'worksheet',label:'Worksheet or activity',n:'printable worksheet',alt:['activity pages','printable activity','learning printable','homeschool printable','printable game','coloring pages'],gift:false}
+  ]},
+  handmade: { label:'Handmade', hint:'Jewelry, candles, cards, decor, party goods', products:[
+    {id:'necklace',label:'Necklace',n:'necklace',alt:['pendant necklace','dainty necklace','charm necklace','chain necklace','layering necklace','necklace for women'],gift:true},
+    {id:'bracelet',label:'Bracelet',n:'bracelet',alt:['beaded bracelet','charm bracelet','stacking bracelet','bangle','bracelet stack','friendship bracelet'],gift:true},
+    {id:'earrings',label:'Earrings',n:'earrings',alt:['dangle earrings','stud earrings','drop earrings','hoop earrings','statement earrings','dainty earrings'],gift:true},
+    {id:'candle',label:'Candle',n:'candle',alt:['soy candle','scented candle','jar candle','hand poured candle','wood wick candle','candle gift'],gift:true},
+    {id:'card',label:'Greeting card',n:'card',alt:['greeting card','handmade card','blank card','note card','handmade greeting card','card and envelope'],gift:true},
+    {id:'woodsign',label:'Home decor sign',n:'wood sign',alt:['home decor sign','wooden sign','rustic sign','wall sign','farmhouse sign','door hanger'],gift:true},
+    {id:'keychain',label:'Keychain',n:'keychain',alt:['key ring','key chain','bag charm','acrylic keychain','car keychain','keychain gift'],gift:true},
+    {id:'garland',label:'Party garland or banner',n:'garland',alt:['party banner','party decor','paper garland','banner','bunting','party backdrop'],gift:false}
+  ]},
+  vintage: { label:'Vintage or craft supplies', hint:'Collectibles, vintage finds, beads, fabric', products:[
+    {id:'glass',label:'Vintage glassware',n:'vintage glassware',alt:['retro glasses','vintage glasses','vintage barware','depression glass','vintage drinking glasses','mid century glassware'],gift:true},
+    {id:'vdecor',label:'Vintage home decor',n:'vintage decor',alt:['retro home decor','vintage home decor','antique decor','mid century decor','vintage wall decor','vintage kitchen decor'],gift:true},
+    {id:'collect',label:'Vintage collectible',n:'vintage collectible',alt:['antique','vintage find','collectible','retro collectible','vintage gift','antique collectible'],gift:true},
+    {id:'vclothes',label:'Vintage clothing',n:'vintage clothing',alt:['retro clothing','vintage dress','vintage jacket','vintage tee','90s clothing','70s clothing','80s clothing'],gift:true},
+    {id:'beads',label:'Beads',n:'beads',alt:['jewelry making supplies','glass beads','seed beads','bead bundle','beading supplies','bracelet beads'],gift:false},
+    {id:'fabric',label:'Fabric',n:'fabric',alt:['quilting fabric','cotton fabric','fabric by the yard','fat quarter','fabric bundle','sewing fabric'],gift:false},
+    {id:'charms',label:'Charms',n:'charms',alt:['jewelry charms','pendant charms','charm bundle','bracelet charms','necklace charms','enamel charms'],gift:false},
+    {id:'paper',label:'Paper and cardstock',n:'scrapbook paper',alt:['craft paper','cardstock','paper pack','patterned paper','junk journal paper','scrapbook paper pack'],gift:false}
+  ]}
+};
+/* adjV = how the recipient sits in front of a product ("nurse mug"); giftV = how it reads after "gift for" */
+const RECIPIENTS = [
+  {id:'self',label:'Herself',adjV:[],giftV:[]},
+  {id:'mom',label:'Mom',adjV:['mom','mama'],giftV:['mom','mama','mother']},
+  {id:'dad',label:'Dad',adjV:['dad','papa'],giftV:['dad','papa','father']},
+  {id:'wife',label:'Wife or girlfriend',adjV:['wife','girlfriend'],giftV:['wife','girlfriend','her']},
+  {id:'husband',label:'Husband or boyfriend',adjV:['husband','boyfriend'],giftV:['husband','boyfriend','him']},
+  {id:'friend',label:'Best friend',adjV:['best friend','bestie'],giftV:['best friend','bestie','friend']},
+  {id:'grandma',label:'Grandma',adjV:['grandma','nana'],giftV:['grandma','nana','grandmother']},
+  {id:'teacher',label:'Teacher',adjV:['teacher','teacher appreciation'],giftV:['teacher','new teacher','teacher assistant']},
+  {id:'nurse',label:'Nurse',adjV:['nurse','rn','nursing'],giftV:['nurse','nursing student','new nurse']},
+  {id:'coworker',label:'Coworker',adjV:['coworker','office'],giftV:['coworker','boss','colleague']},
+  {id:'kids',label:'Kids or baby',adjV:['kids','toddler','baby'],giftV:['kids','toddler','baby']},
+  {id:'bride',label:'Bride or bridal party',adjV:['bridal','bride','bridesmaid'],giftV:['bride','bridesmaid','bride to be']},
+  {id:'pet',label:'Pet lover',adjV:['dog mom','cat mom','pet lover'],giftV:['pet lover','dog mom','cat mom']},
+  {id:'home',label:'New homeowner',adjV:['housewarming','new home'],giftV:['new homeowner','new home','first home']}
+];
+const MOMENTS = [
+  {id:'everyday',label:'Everyday / just because',adj:''},
+  {id:'birthday',label:'Birthday',adj:'birthday'},
+  {id:'thanks',label:'Thank you',adj:'thank you'},
+  {id:'anniv',label:'Anniversary',adj:'anniversary'},
+  {id:'retire',label:'Retirement',adj:'retirement'},
+  {id:'newjob',label:'New job',adj:'new job'},
+  {id:'wedding',label:'Wedding',adj:'wedding'},
+  {id:'bach',label:'Bachelorette',adj:'bachelorette'},
+  {id:'babyshower',label:'Baby shower',adj:'baby shower'},
+  {id:'selfcare',label:'Self-care treat',adj:'self care'},
+  {id:'xmas',label:'Christmas',adj:'christmas',seasonal:true},
+  {id:'mday',label:"Mother's Day",adj:'mothers day',seasonal:true},
+  {id:'fday',label:"Father's Day",adj:'fathers day',seasonal:true},
+  {id:'vday',label:"Valentine's Day",adj:'valentines',seasonal:true},
+  {id:'halloween',label:'Halloween',adj:'halloween',seasonal:true},
+  {id:'grad',label:'Graduation',adj:'graduation',seasonal:true}
+];
+/* v = style words shoppers type for each look */
+const STYLES = [
+  {id:'minimal',label:'Minimalist',v:['minimalist','minimal','simple']},
+  {id:'boho',label:'Boho',v:['boho','bohemian','neutral boho']},
+  {id:'retro',label:'Retro',v:['retro','groovy','70s']},
+  {id:'funny',label:'Funny',v:['funny','sarcastic','humor']},
+  {id:'floral',label:'Floral',v:['floral','flower','botanical']},
+  {id:'western',label:'Western',v:['western','cowgirl','country']},
+  {id:'coquette',label:'Coquette',v:['coquette','bow','pink bow']},
+  {id:'faith',label:'Christian / faith',v:['christian','faith','bible verse']},
+  {id:'cottage',label:'Cottagecore',v:['cottagecore','cottage','vintage floral']},
+  {id:'cute',label:'Cute',v:['cute','kawaii','adorable']},
+  {id:'modern',label:'Modern',v:['modern','aesthetic','contemporary']},
+  {id:'vintage',label:'Vintage look',v:['vintage','vintage style','antique style']}
+];
+/* Related angles for common design subjects. Keys are singular. */
+const THEMES = {
+  flower:['floral','botanical','wildflower','flower lover','plant lover','garden','birth flower','pressed flower'],
+  plant:['plant lover','plant mom','botanical','house plant','succulent','garden'],
+  gardening:['garden','gardener','garden lover','plant lover','botanical','vegetable garden'],
+  coffee:['coffee lover','caffeine','latte','espresso','coffee bar','coffee addict'],
+  cat:['cat lover','cat mom','kitty','cat lady','black cat','cat dad'],
+  dog:['dog lover','dog mom','dog dad','puppy','dog owner','paw print'],
+  book:['book lover','bookish','reading','bookworm','librarian','book club'],
+  camping:['camper','happy camper','outdoor','adventure','camp life','campfire'],
+  fishing:['fisherman','fishing lover','lake life','fly fishing','angler','bass fishing'],
+  baking:['baker','home baker','kitchen','cookie','baking lover','cake'],
+  teaching:['teacher','teacher life','classroom','school','elementary teacher','homeschool'],
+  mushroom:['mushroom lover','forest','toadstool','fungi','goblincore','woodland'],
+  butterfly:['monarch','butterfly lover','garden','floral','spring','wings'],
+  bee:['honey bee','bumble bee','beekeeper','save the bees','honeycomb','garden'],
+  beach:['ocean','coastal','beach lover','seashell','summer','lake'],
+  ocean:['coastal','beach','sea','seashell','nautical','wave'],
+  moon:['celestial','moon phase','crescent moon','stars','astrology','witchy'],
+  christian:['faith','bible verse','scripture','jesus','religious','church'],
+  hiking:['hiker','mountain','outdoor','adventure','trail','nature lover'],
+  mountain:['hiking','nature','outdoor','adventure','pine tree','forest'],
+  golf:['golfer','golf lover','golfing','golf course','tee time','putt'],
+  music:['music lover','musician','guitar','piano','vinyl record','band'],
+  yoga:['yoga lover','meditation','zen','spiritual','mindfulness','namaste'],
+  horse:['horse lover','equestrian','horse girl','cowgirl','barn','pony'],
+  chicken:['chicken lady','farm','farmhouse','hen','backyard chickens','chicken lover'],
+  wine:['wine lover','wine glass','vino','wine tasting','rose','red wine'],
+  travel:['traveler','wanderlust','adventure','world map','road trip','passport'],
+  western:['cowgirl','cowboy','rodeo','country','ranch','howdy'],
+  nurse:['nurse life','rn','nursing','medical','healthcare','nurse appreciation'],
+  spooky:['halloween','witchy','ghost','gothic','skeleton','spooky season'],
+  fall:['autumn','harvest','pumpkin','cozy','thanksgiving','leaves'],
+  pumpkin:['fall','autumn','harvest','pumpkin spice','thanksgiving','cozy'],
+  dinosaur:['dino','t rex','dinosaur lover','roar','prehistoric','dinosaur party'],
+  unicorn:['magical','rainbow','fairy','unicorn party','sparkle','pastel'],
+  mermaid:['under the sea','ocean','seashell','mermaid party','sea','beach'],
+  rainbow:['pastel','colorful','boho rainbow','rainbow party','bright','sunshine'],
+  football:['football mom','game day','football season','sports mom','tailgate','sports'],
+  baseball:['baseball mom','game day','softball','sports mom','ball park','sports'],
+  soccer:['soccer mom','game day','sports mom','soccer player','team','sports'],
+  basketball:['basketball mom','game day','sports mom','hoops','team','sports'],
+  volleyball:['volleyball mom','game day','sports mom','volleyball player','team','sports'],
+  sun:['sunshine','sunflower','summer','boho sun','sunny','celestial'],
+  sunflower:['floral','sunshine','summer','flower','botanical','farmhouse'],
+  'mental health':['self care','positive affirmation','motivational','inspirational','mindfulness','anxiety'],
+  affirmation:['positive affirmation','motivational','inspirational','self care','mindset','encouragement']
+};
+const THEME_ALIAS = {floral:'flower',wildflower:'flower',botanical:'flower',garden:'gardening',gardener:'gardening',kitty:'cat',kitten:'cat',puppy:'dog',reading:'book',bookish:'book',teacher:'teaching',camp:'camping',fish:'fishing',bake:'baking',baker:'baking',faith:'christian',jesus:'christian',bible:'christian',mountains:'mountain',hike:'hiking',cowboy:'western',cowgirl:'western',nursing:'nurse',halloween:'spooky',autumn:'fall',dino:'dinosaur',celestial:'moon',sea:'ocean',coastal:'ocean',affirmations:'affirmation','self care':'affirmation'};
+const THEME_IDEAS = ['flowers','coffee','cats','dogs','gardening','books','camping','mushrooms','fishing','baking'];
+/* Brand, character and celebrity names that commonly trigger trademark claims */
+const TM_WORDS = ['disney','marvel','harry potter','hogwarts','taylor swift','swiftie','eras tour','barbie','pokemon','hello kitty','bluey','star wars','stanley','starbucks','nike','lululemon','yeti','nfl','nba','mlb','coachella','grinch','peanuts','snoopy','sanrio','minecraft','super bowl','olympic','cricut','lego','crocs','dunkin','friends tv'];
+
+/* ---------- state ---------- */
+const blank = () => ({type:null,product:null,customProduct:'',customAlt:'',recipients:[],moments:[],theme:'',styles:[],personalized:null});
+let A = blank();
+let step = 0; // 0 intro, 1..6 questions, 7 results
+let results = null; // {groups:[{key,title,desc,items:[phrase]}], marks:{phrase:'keep'|'toss'}}
+
+/* ---------- helpers ---------- */
+const $ = s => document.querySelector(s);
+const esc = s => String(s).replace(/[&<>"']/g, c => ({'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;',"'":'&#39;'}[c]));
+const clean = s => s.toLowerCase().replace(/[^a-z0-9&' -]/g,' ').replace(/\s+/g,' ').trim();
+function singular(w){
+  if (w.length<4) return w;
+  if (/ies$/.test(w)) return w.slice(0,-3)+'y';
+  if (/(ches|shes|xes|sses)$/.test(w)) return w.slice(0,-2);
+  if (/s$/.test(w) && !/(ss|us|is)$/.test(w)) return w.slice(0,-1);
+  return w;
+}
+function themeWord(raw){
+  const t = clean(raw).split(' ').slice(0,3).join(' ');
+  if (!t) return '';
+  const parts = t.split(' '); parts[parts.length-1] = singular(parts[parts.length-1]);
+  return parts.join(' ');
+}
+function tmHit(raw){ const t = ' '+clean(raw)+' '; return TM_WORDS.find(w => t.includes(' '+w+' ') || t.includes(' '+w+'s ')); }
+const words = s => s.split(' ').filter(w => w.length>3);
+const overlaps = (a,b) => { const wb = words(b); return words(a).some(w => wb.includes(w) || wb.includes(singular(w)) || wb.includes(w+'s')); };
+function product(){
+  const t = TYPES[A.type];
+  if (A.product === 'custom') {
+    const n = clean(A.customProduct)||'product';
+    const alt = (A.customAlt||'').split(',').map(clean).filter(x=>x && x!==n).slice(0,6);
+    return {n, alt, gift:A.type!=='digital', label:A.customProduct};
+  }
+  return t.products.find(p => p.id===A.product);
+}
+function spec(p){
+  const n = p.split(' ').length;
+  if (n<=2) return {k:'broad',t:'Broad'};
+  if (n<=4) return {k:'focused',t:'Focused'};
+  return {k:'specific',t:'Very specific'};
+}
+
+/* ---------- phrase builder (Courtney's method: buyer + moment + product, then test) ---------- */
+const MIN_PHRASES = 50, TARGET = 64, START_PER_GROUP = 6;
+function themeVariants(T){
+  if (!T) return [];
+  const key = THEMES[T] ? T : THEME_ALIAS[T];
+  const rel = key ? [key].concat(THEMES[key]) : [T+' lover', T+' themed', T+' inspired'];
+  return [T].concat(rel.filter(x=>x!==T));
+}
+function build(ans){
+  const saved = A; A = ans;
+  const P = product(); A = saved;
+  const N = P.n, alt = (P.alt||[]).slice(), gift = P.gift, custom = ans.product==='custom';
+  const NV = [N].concat(alt);
+  const R = ans.recipients.map(id => RECIPIENTS.find(r=>r.id===id));
+  const M = ans.moments.map(id => MOMENTS.find(m=>m.id===id));
+  const S = ans.styles.map(id => STYLES.find(s=>s.id===id));
+  const tm = tmHit(ans.theme);
+  const T = tm ? '' : themeWord(ans.theme);
+  const TV = themeVariants(T);
+  const others = R.filter(r=>r.id!=='self');
+  const self = R.some(r=>r.id==='self');
+  const r0 = others[0];
+  const funny = S.some(s=>s.id==='funny');
+  const dated = M.filter(m=>m.adj);
+
+  const groups = [];
+  function group(key,title,desc,fn){
+    const pool=[], local=new Set();
+    const add = (...parts) => {
+      const p = parts.filter(Boolean).join(' ').replace(/\s+/g,' ').trim();
+      if (!p || local.has(p) || p.split(' ').length>7) return;
+      const w = p.split(' ').filter(x=>x.length>2 && x!=='for');
+      if (new Set(w).size !== w.length) return;           // no repeated words ("floral floral mug")
+      local.add(p); pool.push(p);
+    };
+    fn(add);
+    if (pool.length) groups.push({key,title,desc,pool,items:[]});
+  }
+
+  group('buyer','Who it’s for','The person she’s shopping for. Gift buyers often type the recipient first.', add=>{
+    others.forEach(r=>{ if (gift) add('gift for',r.giftV[0]); add(r.adjV[0],N); });
+    others.forEach(r=>{ r.adjV.forEach(a=>alt.slice(0,3).forEach(nv=>add(a,nv))); });
+    if (gift) others.forEach(r=>{ r.giftV.forEach(g=>add('gift for',g)); r.giftV.slice(0,2).forEach(g=>add(N,'for',g)); });
+    others.forEach(r=>r.adjV.forEach(a=>add(a,N)));
+    if (gift && T) others.forEach(r=>{ add(T,'gift for',r.giftV[0]); TV.slice(1,3).forEach(tv=>add(tv,'gift for',r.giftV[0])); });
+    if (funny) others.forEach(r=>{ add('funny',r.adjV[0],N); if (gift) add('funny gift for',r.giftV[0]); });
+    if (!gift) others.forEach(r=>dated.forEach(m=>add(r.adjV[0],m.adj,N)));
+    if (self){ add(N,'for women'); add(N,'for her'); alt.slice(0,3).forEach(nv=>{ add(nv,'for women'); add(nv,'for her'); }); add('treat yourself',N); }
+  });
+
+  if (M.length) group('moment','The moment','When she buys. One year-round moment can sell all year long.', add=>{
+    M.forEach(m=>{
+      if (!m.adj){
+        if (gift){ add('just because gift'); add('thinking of you gift'); if (r0){ add('just because gift for',r0.giftV[0]); add('thinking of you gift for',r0.giftV[0]); } add('everyday',N); }
+        else add('everyday',N);
+        return;
+      }
+      add(m.adj,N);
+      if (gift && r0) add(m.adj,'gift for',r0.giftV[0]);
+    });
+    dated.forEach(m=>alt.slice(0,4).forEach(nv=>add(m.adj,nv)));
+    if (gift){ dated.forEach(m=>{ add(m.adj,'gift'); if (r0) r0.giftV.slice(1).forEach(g=>add(m.adj,'gift for',g)); }); }
+    if (T) dated.forEach(m=>{ add(m.adj,T,N); if (gift) add(m.adj,'gift for',T,'lover'); });
+    if (!gift && ans.type==='digital') dated.forEach(m=>{ add(m.adj,N,'template'); add('printable',m.adj,N); });
+    dated.forEach(m=>alt.slice(4).forEach(nv=>add(m.adj,nv)));
+  });
+
+  if (T) group('theme','What it’s about','The subject on the design, plus related angles shoppers use for the same idea.', add=>{
+    TV.forEach(tv=>add(tv,N));
+    TV.slice(0,5).forEach(tv=>alt.slice(0,3).forEach(nv=>add(tv,nv)));
+    if (gift){ add(T,'lover gift'); add('gift for',T,'lover'); TV.slice(1,4).forEach(tv=>add(tv,'gift')); }
+    if (ans.type==='digital'){ add(T,N,'digital download'); add(TV[1],N,'printable'); }
+    TV.slice(5).forEach(tv=>alt.slice(0,2).forEach(nv=>add(tv,nv)));
+  });
+
+  if (S.length) group('style','The look','Style words for shoppers browsing by aesthetic.', add=>{
+    S.forEach(s=>s.v.forEach(sv=>add(sv,N)));
+    S.forEach(s=>s.v.slice(0,2).forEach(sv=>alt.slice(0,3).forEach(nv=>add(sv,nv))));
+    if (T) S.forEach(s=>{ if (TV.some(tv=>s.v.includes(tv))) return; add(s.v[0],T,N); if (TV[1] && !s.v.includes(TV[1])) add(s.v[0],TV[1],N); });
+    if (gift && r0) S.forEach(s=>add(s.v[0],'gift for',r0.giftV[0]));
+  });
+
+  if (ans.personalized) group('custom','Personalized','Buyers who want a name or custom detail search with these words.', add=>{
+    ['personalized','custom','custom name','monogram'].forEach(p=>add(p,N));
+    add(N,'with name');
+    alt.slice(0,3).forEach(nv=>{ add('personalized',nv); add('custom',nv); });
+    if (gift && r0) r0.giftV.forEach(g=>add('personalized gift for',g));
+    if (r0) add('personalized',r0.adjV[0],N);
+    dated.forEach(m=>add('custom',m.adj,N));
+    if (T) add('personalized',T,N);
+  });
+
+  group('format','The product itself','Different names shoppers use for the same item. Great for filling tags.', add=>{
+    alt.forEach(nv=>add(nv));
+    if (ans.type==='digital'){
+      if (P.editable){ add('editable',N); add('canva',N,'template'); }
+      add(N,'instant download'); add(N,'digital download');
+      if (!/printable/.test(N)) add('printable',N);
+    }
+    if (ans.type==='handmade'){ add('handmade',N); alt.slice(0,3).forEach(nv=>add('handmade',nv)); }
+    if (custom || gift){ add(N,'gift'); add('unique',N); add(N,'gift idea'); }
+    if (custom){ add(N,'set'); add(N,'bundle'); add('cute',N); }
+    if (T) alt.forEach(nv=>add(T,nv));
+  });
+
+  /* fill evenly: every group shows its strongest few, then take turns until the list is full */
+  const taken = new Set();
+  const take = g => { while (g.pool.length){ const p=g.pool.shift(); if (!taken.has(p)){ taken.add(p); g.items.push(p); return true; } } return false; };
+  groups.forEach(g=>{ for (let i=0;i<START_PER_GROUP;i++) take(g); });
+  let more = true;
+  while (taken.size<TARGET && more){ more=false; groups.forEach(g=>{ if (taken.size<TARGET && take(g)) more=true; }); }
+
+  /* still short? offer style words they didn't pick, clearly labelled */
+  if (taken.size<MIN_PHRASES){
+    const extra = {key:'looks',title:'More looks to test',desc:'Style words you didn’t pick. Only keep the ones that truly describe your design.',items:[]};
+    const unused = STYLES.filter(s=>!ans.styles.includes(s.id));
+    outer: for (let i=0;i<3;i++) for (const nv of NV.slice(0,3)) for (const s of unused){
+      if (taken.size>=MIN_PHRASES) break outer;
+      if (i>0 && nv!==N) continue;
+      const p = (s.v[i]+' '+nv).trim();
+      if (!taken.has(p)){ taken.add(p); extra.items.push(p); }
+    }
+    if (extra.items.length) groups.push(extra);
+  }
+
+  return {groups:groups.filter(g=>g.items.length).map(({key,title,desc,items})=>({key,title,desc,items})), tm, seasonal: M.some(m=>m.seasonal), evergreen: M.some(m=>!m.seasonal), theme:T};
+}
+
+/* ---------- screens ---------- */
+const QUESTIONS = [
+  {key:'type', title:'What kind of products do you sell?', help:'Pick the one that fits your shop best right now.'},
+  {key:'product', title:'Which product do you want keywords for?', help:'Choose one product. You can run the tool again for each new product.'},
+  {key:'recipients', title:'Who is your customer shopping for?', help:'Picture the one person buying from you. Is it a gift, or something for herself? Pick up to 2.'},
+  {key:'moments', title:'What moment is she shopping for?', help:'Pick up to 3. Year-round moments build your foundation; seasonal ones come later.'},
+  {key:'theme', title:'What is the design about?', help:'One to three words for the interest or subject on your product. Skip this if your design has no theme.'},
+  {key:'styles', title:'What does it look like?', help:'Pick up to 2 styles, then tell me if buyers can add a name or custom detail.'}
+];
+
+function render(){
+  const app = $('#app');
+  if (step===0) app.innerHTML = introHTML();
+  else if (step<=6) app.innerHTML = questionHTML(step);
+  else app.innerHTML = resultsHTML();
+  bind();
+}
+
+function introHTML(){
+  const sample = build({type:'pod',product:'mug',customProduct:'',recipients:['nurse'],moments:['birthday'],theme:'coffee',styles:['funny'],personalized:false});
+  const rows = sample.groups.flatMap(g=>g.items).slice(0,4);
+  return `<section class="screen intro">
+    <p class="eyebrow">Etsy Keyword Generator</p>
+    <h1>Find the words your buyer is already typing</h1>
+    <p class="lede">Answer 6 quick questions about your product and your customer. You’ll get a list of keyword phrases built the way shoppers search, ready to check in your keyword tool and drop into your titles and tags.</p>
+    <ol class="steps">
+      <li><b>Tell me about it</b>Your product, your customer, and the moment she buys.</li>
+      <li><b>Get 50+ phrases</b>Grouped the way shoppers search, sized for Etsy’s 20-character tags.</li>
+      <li><b>Check, then keep</b>Look each one up in your keyword tool and keep the winners.</li>
+    </ol>
+    <div class="sample" aria-label="Example results">
+      <div class="sample-head"><span>A funny coffee mug for a nurse’s birthday</span><span class="tag-ex">Example</span></div>
+      <ul class="rows">${rows.map(p=>rowHTML(p,true)).join('')}</ul>
+    </div>
+    <div><button class="btn btn-primary" data-go="1">Start the questions</button></div>
+  </section>`;
+}
+
+function chips(list, key, multi, max){
+  const cur = A[key];
+  return `<div class="opts" role="group">${list.map(o=>{
+    const on = multi ? cur.includes(o.id) : cur===o.id;
+    return `<button class="opt" type="button" aria-pressed="${on}" data-pick="${key}" data-id="${o.id}" data-multi="${multi?1:0}" data-max="${max||0}">${esc(o.label)}${o.seasonal?'<span class="season">Seasonal</span>':''}</button>`;
+  }).join('')}</div>`;
+}
+
+function questionHTML(n){
+  const q = QUESTIONS[n-1];
+  let body = '';
+  if (q.key==='type'){
+    body = `<div class="opts cards" role="group">${Object.entries(TYPES).map(([id,t])=>`<button class="opt" type="button" aria-pressed="${A.type===id}" data-pick="type" data-id="${id}" data-multi="0"><b>${t.label}</b><span>${t.hint}</span></button>`).join('')}</div>`;
+  } else if (q.key==='product'){
+    const list = TYPES[A.type].products.concat([{id:'custom',label:'Something else'}]);
+    body = chips(list,'product',false) + (A.product==='custom' ? `<div class="field"><label for="customProduct">What do you call it?</label><input class="input" id="customProduct" maxlength="30" placeholder="e.g. baby blanket, sticker, bookmark" value="${esc(A.customProduct)}"></div>
+      <div class="field"><label for="customAlt">Other names shoppers might use <span style="font-weight:400;color:var(--muted)">(optional, separate with commas)</span></label><input class="input" id="customAlt" maxlength="120" placeholder="e.g. book mark, page marker, reading marker" value="${esc(A.customAlt)}"></div>`:'');
+  } else if (q.key==='recipients'){
+    body = chips(RECIPIENTS,'recipients',true,2) + `<p class="limit">${A.recipients.length} of 2 picked</p>`;
+  } else if (q.key==='moments'){
+    body = `<p class="group-label">Year-round</p>${chips(MOMENTS.filter(m=>!m.seasonal),'moments',true,3)}<p class="group-label">Seasonal</p>${chips(MOMENTS.filter(m=>m.seasonal),'moments',true,3)}<p class="limit">${A.moments.length} of 3 picked</p>`;
+  } else if (q.key==='theme'){
+    const hit = tmHit(A.theme);
+    body = `<div class="field"><label for="theme">Design subject</label><input class="input" id="theme" maxlength="40" placeholder="e.g. coffee, cats, gardening" value="${esc(A.theme)}" autocomplete="off"></div>
+      <p class="group-label">Ideas</p><div class="opts">${THEME_IDEAS.map(t=>`<button class="opt" type="button" data-theme-idea="${t}" aria-pressed="${clean(A.theme)===t}">${t}</button>`).join('')}</div>
+      <div id="tmwarn">${hit?tmNotice(hit):''}</div>`;
+  } else if (q.key==='styles'){
+    body = chips(STYLES,'styles',true,2) + `<p class="limit">${A.styles.length} of 2 picked (optional)</p>
+      <p class="group-label">Can buyers personalize it?</p>
+      <div class="yesno" role="group"><button class="opt" type="button" data-yn="1" aria-pressed="${A.personalized===true}">Yes, they add a name or detail</button><button class="opt" type="button" data-yn="0" aria-pressed="${A.personalized===false}">No</button></div>`;
+  }
+  return `<section class="screen q">
+    <div class="progress" aria-hidden="true">${[1,2,3,4,5,6].map(i=>`<i class="${i<=n?'on':''}"></i>`).join('')}</div>
+    <p class="qcount">Question ${n} of 6</p>
+    <h2>${q.title}</h2><p class="help">${q.help}</p>
+    ${body}
+    <div class="nav">
+      <button class="btn-text" type="button" data-go="${n-1}">← Back</button>
+      <button class="btn btn-primary" type="button" id="next" ${ready(n)?'':'disabled'}>${n===6?'Show my keywords':(q.key==='theme' && !A.theme.trim()?'Skip':'Next')}</button>
+    </div>
+  </section>`;
+}
+
+function tmNotice(w){
+  return `<div class="notice" style="margin-top:18px"><strong>Heads up:</strong> “${esc(w)}” is likely a trademarked name. I’ve left it out of your phrases. Brand, character and celebrity names can get listings removed or a shop shut down, so check the USPTO trademark search before you use any of them.</div>`;
+}
+
+function ready(n){
+  const k = QUESTIONS[n-1].key;
+  if (k==='type') return !!A.type;
+  if (k==='product') return !!A.product && (A.product!=='custom' || clean(A.customProduct).length>1);
+  if (k==='recipients') return A.recipients.length>0;
+  if (k==='moments') return A.moments.length>0;
+  if (k==='theme') return true;
+  if (k==='styles') return A.personalized!==null;
+}
+
+function rowHTML(p, demo){
+  const len = p.length, fits = len<=20, s = spec(p);
+  const mark = results && results.marks[p];
+  return `<li class="row ${mark==='keep'?'kept':mark==='toss'?'aside':''}">
+    <div class="phrase">${esc(p)}</div>
+    <div class="meta">
+      <span class="meter ${fits?'':'over'}" style="--w:${Math.min(100,len/20*100)}%"><i></i>${fits?`${len}/20 · tag-ready`:`${len} chars · title only`}</span>
+      <span class="spec ${s.k}">${s.t}</span>
+    </div>
+    ${demo?'':`<div class="acts">
+      <button class="chip keep" type="button" data-mark="keep" data-p="${esc(p)}" aria-pressed="${mark==='keep'}">Keep</button>
+      <button class="chip toss" type="button" data-mark="toss" data-p="${esc(p)}" aria-pressed="${mark==='toss'}">Set aside</button>
+    </div>`}
+  </li>`;
+}
+
+function profileHTML(){
+  const P = product();
+  const bits = [['Product', P.label || TYPES[A.type].products.find(p=>p.id===A.product).label],
+    ['For', A.recipients.map(id=>RECIPIENTS.find(r=>r.id===id).label).join(', ')],
+    ['Moment', A.moments.map(id=>MOMENTS.find(m=>m.id===id).label).join(', ')]];
+  if (results.theme) bits.push(['About', results.theme]);
+  if (A.styles.length) bits.push(['Style', A.styles.map(id=>STYLES.find(s=>s.id===id).label).join(', ')]);
+  if (A.personalized) bits.push(['', 'Personalized']);
+  return `<div class="profile">${bits.map(([k,v])=>`<span>${k?`<b>${k}</b>`:''}${esc(v)}</span>`).join('')}</div>`;
+}
+
+function allPhrases(){ return results.groups.flatMap(g=>g.items); }
+
+function keptHTML(){
+  const kept = allPhrases().filter(p=>results.marks[p]==='keep');
+  const tagReady = kept.filter(p=>p.length<=20).length;
+  const checked = allPhrases().filter(p=>results.marks[p]).length;
+  return `<section class="kept" id="keptBox">
+    <h2>Your checked list</h2>
+    <div class="stats"><span>Checked <b>${checked}/${allPhrases().length}</b></span><span>Kept <b>${kept.length}</b></span><span>Tag-ready <b>${Math.min(tagReady,13)}/13</b> tags</span></div>
+    ${kept.length ? `<ul>${kept.map(p=>`<li>${esc(p)}</li>`).join('')}</ul>` : `<p class="empty">Phrases you keep after checking them in your keyword tool will collect here, ready to copy into your listing.</p>`}
+    ${kept.length ? `<p style="font-size:15px;color:var(--muted)">Lead your title with your strongest kept phrase. Use the tag-ready ones (20 characters or less) to fill all 13 tags, and cover different groups so each tag opens a different door.</p>`:''}
+    <div class="copyrow"><button class="btn btn-ghost" type="button" data-copy="kept" ${kept.length?'':'disabled'}>Copy kept phrases</button><span class="copied" id="copiedKept" hidden>Copied</span></div>
+    <div id="fbKept"></div>
+  </section>`;
+}
+
+function resultsHTML(){
+  const total = allPhrases().length;
+  return `<section class="screen results">
+    <div style="display:grid;gap:14px">
+      <p class="eyebrow">Your keyword starting list</p>
+      <h1>${total} phrases built for your buyer</h1>
+      ${profileHTML()}
+    </div>
+    ${results.tm ? tmNotice(results.tm) : ''}
+    ${results.seasonal && !results.evergreen ? `<div class="notice"><strong>Start with year-round:</strong> you only picked seasonal moments. Seasonal searches spike and then disappear. Build your shop on phrases people search all year, then add seasonal listings on top.</div>`:''}
+    ${results.seasonal && results.evergreen ? `<div class="notice"><strong>Order matters:</strong> list your year-round phrases first. Seasonal ones are a bonus once your evergreen listings are selling.</div>`:''}
+
+    <div class="how">
+      <h2>Check every phrase before you use it</h2>
+      <p>These are strong candidates, not guarantees. No one is guessing here: every phrase that goes into your title or tags gets checked in a keyword tool first.</p>
+      <ol>
+        <li>Copy your list and look up each phrase in eRank or EverBee.</li>
+        <li><b>Keep it</b> if shoppers are searching for it and the competition isn’t crowded. Around 15,000 competing listings is still low competition on Etsy, so don’t let that number scare you off.</li>
+        <li><b>Set it aside</b> if almost nobody searches it, or if it’s so broad a new shop can’t stand out. A phrase with 5,000 searches and 2.2 million competing listings is wasted space.</li>
+        <li>Make sure it describes your exact product, then scan the tool’s related suggestions for new phrases to add.</li>
+      </ol>
+      <div class="tools">
+        <a class="btn btn-ghost" href="https://erank.com?fpr=courtney-644a45" target="_blank" rel="noopener">Open eRank</a>
+        <a class="btn btn-ghost" href="https://www.everbee.io/?via=courtney-richer" target="_blank" rel="noopener">Open EverBee</a>
+        <button class="btn btn-primary" type="button" data-copy="all">Copy all phrases</button>
+        <span class="copied" id="copiedAll" hidden>Copied</span>
+      </div>
+      <div id="fbAll"></div>
+      <p class="disclose">eRank and EverBee links are affiliate links. I may earn a commission at no extra cost to you.</p>
+    </div>
+
+    <div>
+      <div class="list-head"><h2>Your phrases</h2></div>
+      <div class="legend"><span><b>Broad</b> · check competition first</span><span><b>Focused</b> · the sweet spot to test</span><span><b>Very specific</b> · check people search it</span></div>
+      ${total<50 ? `<div class="notice" style="margin-top:14px"><strong>Want more phrases?</strong> Go back and add a design subject, a style, or other names for your product. Each one opens new combinations.</div>`:''}
+      ${results.groups.map(g=>`<div class="group"><h3>${g.title} <span style="color:var(--muted);font-weight:400">· ${g.items.length}</span></h3><p class="gdesc">${g.desc}</p><ul class="rows">${g.items.map(p=>rowHTML(p)).join('')}</ul></div>`).join('')}
+      <form class="addown" id="addForm"><label class="sr" for="own" style="position:absolute;left:-9999px">Add your own phrase</label><input class="input" id="own" maxlength="60" placeholder="Thought of another phrase? Add it here"><button class="btn btn-ghost" type="submit">Add phrase</button></form>
+    </div>
+
+    ${keptHTML()}
+
+    <section class="cta">
+      <p class="eyebrow">Next step</p>
+      <h2>Keywords get you into the room. They don’t decide where you stand in it.</h2>
+      <p>Ranking comes from the whole listing working together: a clear customer, the words she types, a first photo she clicks, and a price she trusts. Inside The Million Dollar Etsy Method we build that step by step, with lessons on choosing your customer, finding her words, and writing titles and tags, plus a weekly live call where you can bring your questions.</p>
+      <a class="btn btn-primary" href="https://courtneynichole.net/community" target="_blank" rel="noopener">Join the community</a>
+    </section>
+
+    <div style="display:flex;justify-content:center"><button class="btn-text" type="button" id="restart">Start over with a new product</button></div>
+    <p class="foot">Built by Courtney Nichole · courtneynichole.net</p>
+    ${dockHTML()}
+  </section>`;
+}
+
+function dockHTML(){
+  const kept = allPhrases().filter(p=>results.marks[p]==='keep');
+  const checked = allPhrases().filter(p=>results.marks[p]).length;
+  return `<div class="dock" id="dock"><div class="dock-in">
+    <span>Checked <b>${checked}/${allPhrases().length}</b></span>
+    <span>Kept <b>${kept.length}</b></span>
+    <a href="#keptBox" class="dock-link">See my list</a>
+  </div></div>`;
+}
+
+/* ---------- events ---------- */
+function bind(){
+  document.querySelectorAll('[data-go]').forEach(b=>b.onclick=()=>{ step=+b.dataset.go; render(); window.scrollTo(0,0); });
+  document.querySelectorAll('[data-pick]').forEach(b=>b.onclick=()=>{
+    const k=b.dataset.pick, id=b.dataset.id, multi=b.dataset.multi==='1', max=+b.dataset.max;
+    if (!multi){
+      if (k==='type' && A.type!==id){ A.product=null; A.customProduct=''; }
+      A[k]=id;
+    } else {
+      const arr=A[k], i=arr.indexOf(id);
+      if (i>-1) arr.splice(i,1);
+      else { if (max && arr.length>=max) arr.shift(); arr.push(id); }
+    }
+    render();
+    if (k==='product' && id==='custom'){ const c=$('#customProduct'); c && c.focus(); }
+  });
+  const cp=$('#customProduct');
+  if (cp) cp.oninput=()=>{ A.customProduct=cp.value; $('#next').disabled=!ready(2); };
+  const ca=$('#customAlt');
+  if (ca) ca.oninput=()=>{ A.customAlt=ca.value; };
+  const th=$('#theme');
+  if (th) th.oninput=()=>{
+    A.theme=th.value; const hit=tmHit(A.theme);
+    $('#tmwarn').innerHTML = hit?tmNotice(hit):'';
+    $('#next').textContent = A.theme.trim()?'Next':'Skip';
+    document.querySelectorAll('[data-theme-idea]').forEach(x=>x.setAttribute('aria-pressed', clean(A.theme)===x.dataset.themeIdea));
+  };
+  document.querySelectorAll('[data-theme-idea]').forEach(b=>b.onclick=()=>{ A.theme=b.dataset.themeIdea; render(); });
+  document.querySelectorAll('[data-yn]').forEach(b=>b.onclick=()=>{ A.personalized=b.dataset.yn==='1'; render(); });
+  const nx=$('#next');
+  if (nx) nx.onclick=()=>{
+    if (step===6){ results = Object.assign(build(A),{marks:{}}); }
+    step++; render(); window.scrollTo(0,0);
+  };
+  document.querySelectorAll('[data-mark]').forEach(b=>b.onclick=()=>{
+    const p=b.dataset.p, m=b.dataset.mark;
+    results.marks[p] = results.marks[p]===m ? undefined : m;
+    const li=b.closest('.row');
+    li.classList.toggle('kept',results.marks[p]==='keep');
+    li.classList.toggle('aside',results.marks[p]==='toss');
+    li.querySelectorAll('[data-mark]').forEach(x=>x.setAttribute('aria-pressed', results.marks[p]===x.dataset.mark));
+    $('#keptBox').outerHTML = keptHTML(); $('#dock').outerHTML = dockHTML(); bindCopy();
+  });
+  const af=$('#addForm');
+  if (af) af.onsubmit=e=>{
+    e.preventDefault();
+    const v=clean($('#own').value); if (!v) return;
+    let g=results.groups.find(x=>x.key==='own');
+    if (!g){ g={key:'own',title:'Your ideas',desc:'Phrases you added. Check these the same way.',items:[]}; results.groups.push(g); }
+    if (!allPhrases().includes(v)) g.items.push(v);
+    const y=window.scrollY; render(); window.scrollTo(0,y);
+    $('#own').focus();
+  };
+  const rs=$('#restart');
+  if (rs) rs.onclick=()=>{ A=blank(); results=null; step=1; render(); window.scrollTo(0,0); };
+  bindCopy();
+}
+
+function bindCopy(){
+  document.querySelectorAll('[data-copy]').forEach(b=>b.onclick=()=>{
+    const which=b.dataset.copy;
+    const list = which==='all' ? allPhrases() : allPhrases().filter(p=>results.marks[p]==='keep');
+    const text = list.join('\n');
+    const ok = $(which==='all'?'#copiedAll':'#copiedKept');
+    const fb = $(which==='all'?'#fbAll':'#fbKept');
+    const fallback = ()=>{ fb.innerHTML=`<p style="font-size:14px;color:var(--muted);margin-bottom:6px">Select the text below and copy it.</p><textarea class="fallback" readonly>${esc(text)}</textarea>`; const t=fb.querySelector('textarea'); t.focus(); t.select(); };
+    try{
+      navigator.clipboard.writeText(text).then(()=>{ ok.hidden=false; setTimeout(()=>ok.hidden=true,1800); }).catch(fallback);
+    }catch(e){ fallback(); }
+  });
+}
+
+render();
+</script>
+
+</body>
+</html>
